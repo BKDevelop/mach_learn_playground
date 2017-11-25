@@ -17,6 +17,7 @@ neuralNetwork = MLPClassifier()
 
 
 # get data for all downs
+print('Importing 2012 NFL season play by play data...\n')
 with open("2012_nfl_pbp_data_rp.csv") as f:
     reader = csv.reader(f)
     header = next(reader) # Jump the header
@@ -40,42 +41,32 @@ with open("2012_nfl_pbp_data_rp.csv") as f:
 f.close()
             
 # train models
+print("Training Decision Tree...")
 treeModel = treeModel.fit(gameSituations_train, playCalls_train)
+print("Training Linear SVC...")
 linearSVC = linearSVC.fit(gameSituations_train, playCalls_train)
+print("Training MLP Neural Network...")
 neuralNetwork = neuralNetwork.fit(gameSituations_train, playCalls_train)
 
-# test decision tree
-counter = 0
-hits = 0
-for situation in gameSituations_test:
-    if(playCalls_test[counter] == treeModel.predict([situation])):
-        hits += 1
-    
-    counter += 1
-    
-print(hits/counter)
-print(counter)
 
-# test linearSVC
-counter = 0
-hits = 0
+# test models
+testCounter = 0
+treeModelHits = 0
+linearSVCHits = 0
+neuralNetworkHits = 0
 for situation in gameSituations_test:
-    if(playCalls_test[counter] == linearSVC.predict([situation])):
-        hits += 1
+    if(playCalls_test[testCounter] == treeModel.predict([situation])):
+        treeModelHits += 1
+    if(playCalls_test[testCounter] == linearSVC.predict([situation])):
+        linearSVCHits += 1
+    if(playCalls_test[testCounter] == neuralNetwork.predict([situation])):
+        neuralNetworkHits += 1
     
-    counter += 1
-    
-print(hits/counter)
-print(counter)
+    testCounter += 1
 
-# test neural Network
-counter = 0
-hits = 0
-for situation in gameSituations_test:
-    if(playCalls_test[counter] == neuralNetwork.predict([situation])):
-        hits += 1
-    
-    counter += 1
-    
-print(hits/counter)
-print(counter)
+# Output Results
+
+print("\nModels and respective percentage of correct predictions out of ", testCounter + 1, " tested game situations:\n")
+print("Decision Tree: ", "%.2f" % (treeModelHits * 100 / (testCounter + 1)), " %")
+print("Linear SVC: ", "%.2f" % (linearSVCHits * 100 / (testCounter + 1)), " %")
+print("MLP Neural Network: ", "%.2f" % (neuralNetworkHits * 100 / (testCounter + 1)), " %")
