@@ -1,6 +1,6 @@
 # NFL Predict
 ## Overview
-coming soon...
+I used a [play-by-play data set of the 2012 NFL season](http://archive.advancedfootballanalytics.com/2010/04/play-by-play-data.html) for all teams and tried out several machine learning models to predict the pay call (‘Run’ or ‘Pass’) on the first three downs based on down and distance. Later I also included 4th down calls ('Field Goal', 'Punt'). The success rate is between 60-67 %.
 
 ## Test cases
 In general, files ending with '_test.py' can be executed to train and test several methods (80/20 data split). Files without said ending promt the user to feed in details of a game situation and predicts a play call. 
