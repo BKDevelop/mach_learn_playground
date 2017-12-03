@@ -12,7 +12,7 @@ I built a simple neural network utilising backpropagation just using numpy.
 ### NFL Play by play prediction
 I used a [play-by-play data set of the 2012 NFL season](http://archive.advancedfootballanalytics.com/2010/04/play-by-play-data.html) for all teams and tried out several machine learning models to predict the pay call (‘Run’ or ‘Pass’) on the first three downs based on down and distance. Later I also included 4th down calls ('Field Goal', 'Punt').
 
-The models predict the playcall correctly 60% to 67% of the time. This is a surprisingly good resutl, given the strategic complexity of the game.
+The models predict the playcall correctly 60% to 67% of the time. This is a surprisingly good result, given the strategic complexity of the game.
 
 ## Suggestions, other Feedback
 
