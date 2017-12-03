@@ -8,7 +8,7 @@ import numpy as np
 
 def sig(x,deriv=False):
     if(deriv==True):
-        return x*(1-x)
+        return (x*(1-x))
     
     return 1/(1+np.exp(-x))
 ###############################
@@ -74,8 +74,8 @@ for i in range(60000):
     # gradient descent
     # use deltas to update the weights (-> reduce error) every iteration
     
-    syn1 = layer1.T.dot(layer2_delta)
-    syn0 = layer0.T.dot(layer1_delta)
+    syn1 += layer1.T.dot(layer2_delta)
+    syn0 += layer0.T.dot(layer1_delta)
               
 ##########################################
 
